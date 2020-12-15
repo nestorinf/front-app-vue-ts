@@ -1,21 +1,25 @@
 <template>
-    <v-flex md="4" lg="4" sm="2" xl="2" >
-        <v-card max-width="380" color="grey lighten-5" class="my-1 rounded" flat>
-            <v-card-title>Titulo</v-card-title>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-actions>
-                <v-row>
-                    <v-btn
-                    color="deep-purple lighten-2"
-                    text
-                    >Hola</v-btn>
-                </v-row>
-            </v-card-actions>
-        </v-card>
-    </v-flex>
+    <v-row class="mb-8 ml-0 mr-0" >
+        <v-col cols="12" md="3" lg="3" min-he sm="4" xs="4" v-for="col in 5" :key="col"  >
+            <v-card max-width="800"   color="grey lighten-5"  flat >
+                <v-img
+                    height="300"
+                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+                <v-card-title>Titulo</v-card-title>
+                <v-card-actions>
+                    <v-row>
+                        <v-btn
+                        color="deep-purple lighten-2"
+                        text
+                        >Hola</v-btn>
+                    </v-row>
+                </v-card-actions>
+            </v-card>
+            
+        </v-col>
+        
+    </v-row>
  
 
 </template>
