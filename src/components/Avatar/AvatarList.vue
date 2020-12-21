@@ -2,9 +2,9 @@
   <div class="avatar__list">
     <v-row class="mr-0 ml-0">
       <v-col class="stories__center" >
-        <v-list v-for="n in 10" :key="n">
+        <v-list v-for="({cover} ,index) in avatarData" :key="index">
           <v-list-item>
-            <Avatar></Avatar>
+            <Avatar :cover="cover"></Avatar>
           </v-list-item>
         </v-list>
       </v-col>
@@ -13,14 +13,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import Avatar from './Avatar.vue'
 @Component({
   components: {
     Avatar
   }
 })
-export default class AvatarList extends Vue {}
+export default class AvatarList extends Vue {
+  @Prop() avatarData!: object
+}
 </script>
 
 <style >

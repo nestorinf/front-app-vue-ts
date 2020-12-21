@@ -1,31 +1,21 @@
 <template>
-  <v-row class="d-flex">
-    <Card />
-  </v-row>
+<div class="row-fluid justify-center">
+    <CardList />
+
+</div>
+  <!-- <v-row > -->
+  <!-- </v-row> -->
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Card from '../components/Card.vue'
-import gql from 'graphql-tag'
+import CardList from '../components/Cards/CardList.vue'
 
 @Component({
   components: {
-    Card
+    CardList
   }
 })
 export default class Base extends Vue {
-  Categories: any
-  get apollo () {
-    return {
-      Categories: {
-        query: gql`query {
-            categories{
-              id
-              cover
-            }
-          }`
-      }
-    }
-  }
+  categories: any = []
 }
 </script>

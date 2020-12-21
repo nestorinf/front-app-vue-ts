@@ -1,14 +1,16 @@
 <template>
     <v-avatar>
       <img
-        src="https://cdn.vuetifyjs.com/images/john.jpg"
+        :src="cover"
         alt="John"
       >
     </v-avatar>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator'
+import {Component, Prop, Vue} from 'vue-property-decorator'
 @Component
-export default class Avatar extends Vue {}
+export default class Avatar extends Vue {
+  @Prop() cover!: string
+}
 </script>
