@@ -1,10 +1,7 @@
 <template>
-<div class="row-fluid justify-center">
+  <!-- <div class=""> -->
     <CardList />
-
-</div>
-  <!-- <v-row > -->
-  <!-- </v-row> -->
+  <!-- </div> -->
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'

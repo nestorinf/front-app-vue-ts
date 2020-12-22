@@ -1,55 +1,38 @@
 <template>
   <!-- App.vue -->
-
   <v-app>
-    <v-app-bar app color="blue lighten-1" flat>
-      <!-- -->
-    </v-app-bar>
+    <Header />
     <v-main>
-      <v-container fluid>
-        <AvatarList :avatarData="this.dataAvatar"  />
-        <v-layout class="p-0 ml-0" justify-center align-center>
-          <Base />
-        </v-layout>
+      <v-container class="padding__muted" >
+        <Content />
       </v-container>
     </v-main>
-    <BottomNav />
+    <Footer />
   </v-app>
 </template>
 
 <script lang="ts">
 
 import { Component, Vue } from 'vue-property-decorator'
-import BottomNav from './components/BottomNav.vue'
-import AvatarList from './components/Avatar/AvatarList.vue'
-import Base from './views/Base.vue'
-import {categoriesQuery} from './graphql/queries/categories'
-import gql from 'graphql-tag'
 
+import Header from './layout/Header.vue'
+import Footer from './layout/Footer.vue'
+import Content from './layout/Content.vue'
 @Component({
   components: {
-    Base,
-    BottomNav,
-    AvatarList
-  },
-  apollo: {
-    categories: {
-      query: gql`${categoriesQuery}`,
-      result ({data, loading}) {
-        if (!loading) {
-          this.dataAvatar = data.categories
-        }
-      }
-    }
+    Header,
+    Content,
+    Footer
   }
 })
 export default class App extends Vue {
-  data () {
-    return {
-      dataAvatar: []
-    }
-  }
+  
   //mounted () { }
 }
 </script>
 
+<style scoped>
+  .padding__muted {
+    margin-right: 0px !important;
+  }
+</style>

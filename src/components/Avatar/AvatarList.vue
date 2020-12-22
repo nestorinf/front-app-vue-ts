@@ -1,10 +1,11 @@
 <template>
   <div class="avatar__list">
-    <v-row class="mr-0 ml-0">
+    <v-row class="m-0 p-0">
       <v-col class="stories__center" >
-        <v-list v-for="({cover} ,index) in avatarData" :key="index">
+        <v-list v-for="(dataAvatar ,index) in avatarData" :key="index">
           <v-list-item>
-            <Avatar :cover="cover"></Avatar>
+            <Avatar :avatarData="dataAvatar"></Avatar>
+              
           </v-list-item>
         </v-list>
       </v-col>

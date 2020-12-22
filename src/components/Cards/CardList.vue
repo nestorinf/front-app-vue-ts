@@ -1,13 +1,11 @@
 <template>
-    <div class="row ">
-            <div v-for="(card, index) in dataArray" :key="index" >
-                <v-col md="12" lg="12" sm="6" xs="6" class="ma-0 pa-0 " >
-                    <Card :dataCard="card"></Card>
-                </v-col>
-            </div>
-    </div>
-    <!-- <div class="row card__list"  > -->
-    <!-- </div> -->
+    <v-row :style="changeDisplay">
+        <div  v-for="(card, index) in dataArray" :key="index" >
+            <v-flex xs12 md12 lg12 sm12 >
+                <Card :dataCard="card"></Card>
+            </v-flex>
+        </div>
+    </v-row>
 </template>
 
 <script lang="ts">
@@ -32,6 +30,15 @@ import { productsQuery } from '../../graphql/queries/products'
 })
 export default class AvatarList extends Vue {
 
+  get changeDisplay () {
+    let display = 'display:flex'
+    if (this.$vuetify.breakpoint.mobile) {
+      display  = 'display:block' 
+    }
+    return display
+   
+  }
+  
   data () {
     return {
       dataArray: []
