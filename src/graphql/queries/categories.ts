@@ -1,7 +1,7 @@
 export const  categoriesQuery = `query {
-    categories{
-      id
+    getCategories {
       name
       cover
+      categoryID
     }
   }`

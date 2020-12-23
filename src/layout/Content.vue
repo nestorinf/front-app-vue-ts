@@ -1,13 +1,17 @@
 <template>
-
-    <v-row  class="">
+    <div>
+        <v-row >
         <v-col cols="12">
             <AvatarList :avatarData="this.dataAvatar"></AvatarList>
         </v-col>
+    </v-row>
+    <v-row  class="">
+        
         <v-col cols="12" >
             <CardList />
         </v-col>
     </v-row>
+    </div>
 </template>
 
 <script lang="ts">
@@ -26,9 +30,10 @@ import gql from 'graphql-tag'
       query: gql`${categoriesQuery}`,
       result ({data, loading}) {
         if (!loading) {
-          this.dataAvatar = data.categories
+          this.dataAvatar = data.getCategories
         }
-      }
+      },
+      update: data => data.getCategories
     }
   }
 })

@@ -1,6 +1,7 @@
 export const productsQuery = `query {
-    photos {
+    getProducts {
+      _id
       name
-      src
+      img
     }
   }`

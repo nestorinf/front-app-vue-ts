@@ -1,6 +1,6 @@
 <template>
     <v-row :style="changeDisplay">
-        <div  v-for="(card, index) in dataArray" :key="index" >
+        <div  v-for="(card, index) in this.dataArray" :key="index" >
             <v-flex xs12 md12 lg12 sm12 >
                 <Card :dataCard="card"></Card>
             </v-flex>
@@ -20,11 +20,13 @@ import { productsQuery } from '../../graphql/queries/products'
   apollo: {
     products: {
       query: gql`${productsQuery}`,
+      loadingKey:'loading...',
       result ({data, loading}) {
         if (!loading) {
-          this.dataArray = data.photos
+          this.dataArray = data.getProducts
         }
-      }
+      },
+      update: data => data.getProducts
     }
   }
 })

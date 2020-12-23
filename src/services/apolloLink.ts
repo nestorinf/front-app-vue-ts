@@ -5,7 +5,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'https://pedidoswebapi.iancarina.com.ve/graphql'
+  // uri: 'https://pedidoswebapi.iancarina.com.ve/graphql'
+  uri:'https://produtcsgraphql-5f1cf.us1.kintocloud.com/graphql'
 })
 
 // Cache implementation
