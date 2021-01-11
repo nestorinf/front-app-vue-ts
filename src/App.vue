@@ -5,6 +5,7 @@
     <v-main>
       <v-container class="padding__muted" >
         <Content />
+        <router-view></router-view>
       </v-container>
     </v-main>
     <Footer />

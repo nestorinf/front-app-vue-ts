@@ -1,6 +1,6 @@
 <template>
     <v-row :style="changeDisplay">
-        <div  v-for="(card, index) in this.dataArray" :key="index" >
+        <div  v-for="(card, index) in this.dataProducts" :key="index" >
             <v-flex xs12 md12 lg12 sm12 >
                 <Card :dataCard="card"></Card>
             </v-flex>
@@ -9,28 +9,22 @@
 </template>
 
 <script lang="ts">
-import gql from 'graphql-tag'
-import {Component, Vue} from 'vue-property-decorator'
+
+import {Component, Vue, Watch} from 'vue-property-decorator'
 import Card from '../Cards/Card.vue'
-import { productsQuery } from '../../graphql/queries/products'
+import {mapGetters} from 'vuex'
 @Component({
   components: {
     Card
   },
-  apollo: {
-    products: {
-      query: gql`${productsQuery}`,
-      loadingKey:'loading...',
-      result ({data, loading}) {
-        if (!loading) {
-          this.dataArray = data.getProducts
-        }
-      },
-      update: data => data.getProducts
-    }
+  computed: {
+    ...mapGetters({
+      storeProducts: 'Product/GETPRODUCT'
+    })
   }
 })
 export default class AvatarList extends Vue {
+  public dataProducts: Array<object> = []
 
   get changeDisplay () {
     let display = 'display:flex'
@@ -40,12 +34,18 @@ export default class AvatarList extends Vue {
     return display
    
   }
-  
-  data () {
-    return {
-      dataArray: []
-    }
+  getProducts () {
+    this.$store.dispatch('Product/PRODUCTSDATA')
   }
+  mounted () {
+    this.getProducts()
+  }
+  
+  @Watch('storeProducts')
+  onDataProduct (data: []) {
+    this.dataProducts = data
+  }
+
 }
 
 </script>
